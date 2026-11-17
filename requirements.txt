@@ -1,0 +1,8 @@
+# Versions this analysis was run with (Python 3.14): pandas 3.1, numpy 2.5,
+# matplotlib 3.11, seaborn 0.13, scikit-learn 1.9. The notebook needs pandas 3.x.
+pandas>=3.0
+numpy>=2.0
+matplotlib>=3.8
+seaborn>=0.13
+scikit-learn>=1.5
+jupyter

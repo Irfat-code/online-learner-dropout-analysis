@@ -1,0 +1,12 @@
+# Raw OULAD files are large (studentVle.csv is ~430 MB); download them instead of committing
+data/raw/
+
+# Jupyter and Python clutter
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+
+# Backup notebook
+*backup*.ipynb
