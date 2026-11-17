@@ -12,7 +12,7 @@ An edtech retention team wants to know which students are likely to withdraw, an
 
 - **31.2% of enrolments ended in withdrawal, and about half of those happened by day 27** (50%, or 46% excluding a one-day spike in October 2014). 26.3% left before the module even started, so no week-4 alert can reach them.
 - **Early engagement separates passing from not passing, but not withdrawal from failure.** Among students still registered on day 27, those who later withdrew had a median of 143 clicks in the first four weeks vs 217 for students with a Pass, but students who stayed and failed were even less active (103).
-- **Missing the first-assessment deadline is the best early warning for withdrawal.** Where it's due by day 25 (2014 data), it flags 39% of students, 32.5% of whom go on to withdraw: 1.47× the baseline, against 1.23× for a week-4 model flagging the same share of the same students (gap +0.20, 95% bootstrap interval +0.13 to +0.26). It catches a quarter of all 2014 withdrawals, up to two weeks before week 4. Students who never submit are the highest risk: only 4.8% pass.
+- **Missing the first-assessment deadline gives the highest lift at equal outreach volume, and the widest reach.** Where it's due by day 25 (2014 data), it flags 39% of students, 32.5% of whom go on to withdraw (1.47× the baseline). On the 12,509 students the week-4 model can also score, the alert's lift is 1.44× against 1.24× for the model flagging the same share (gap +0.20, 95% bootstrap interval +0.13 to +0.26, covering sampling noise in the 2014 students only). The other 158 students all withdrew before the model could score them, and the alert had already flagged 145. It catches a quarter of all 2014 withdrawals, up to two weeks before week 4. Students who never submit are the highest risk: only 4.8% pass.
 - **A week-4 model works better for "not passing" than for withdrawal alone.** ROC AUC is 0.713 vs 0.614, and 70.5% of the riskiest 20% didn't pass (43.7% baseline). Neither model is strong, so both are best used to prioritise outreach.
 - **Workload is the biggest background risk.** Withdrawal doubles from 25.4% for students taking 60 credits or fewer to 51.3% for those taking over 120.
 
@@ -35,7 +35,7 @@ An edtech retention team wants to know which students are likely to withdraw, an
 - **Survivorship:** engagement is compared among students still registered at each point, so students who have already left don't drag averages down. (In the latest weeks, the remaining withdrawers are only those who leave late, so the group's make-up still shifts over time.)
 - **Leakage:** the week-4 model is designed to use only information available by day 27, and a missed assessment counts late submissions as missed, because that's all the team can see on the due date.
 - **Out-of-time validation:** the model is trained on 2013 and tested on 2014, and also evaluated on modules seen in both years.
-- **Like-for-like comparisons:** every alert is measured with precision, baseline, lift and recall, for both withdrawal and not passing, and compared with the model **flagging the same share of the same students**. The headline gap has a 95% bootstrap interval.
+- **Like-for-like comparisons:** every alert is measured with precision, baseline, lift and recall, for both withdrawal and not passing, and compared with the model **flagging the same share of the same students**. The headline gap has a 95% bootstrap interval (sampling noise in the 2014 test students only; the trained model is held fixed).
 - **Data checks:** a spike of 723 withdrawals on day 12 of the October 2014 presentations is flagged as a likely administrative event (cause not confirmed); 90% of missing deprivation bands are in two regions; 493 first-assessment scores banked from earlier attempts are counted as on time.
 
 ## Data
@@ -52,8 +52,10 @@ The raw files are not included in this repository (`studentVle.csv` alone is abo
 online-learner-dropout-analysis/
 ├── Online Learner Dropout - Exploratory Analysis.ipynb   # the full analysis, 10 sections
 ├── figures/                                             # charts saved by the notebook
-├── data/raw/                                            # OULAD CSVs (not committed)
+├── data/raw/                                            # put the OULAD CSVs here (not committed)
 ├── requirements.txt
+├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
@@ -93,6 +95,10 @@ Put the OULAD CSVs in `data/raw/`, open the notebook and run all cells.
 - The missed-assessment alert fires on its due date (days 12–25) and the model on day 28, so they don't act on the same information: the comparison shows which is more useful to a retention team, not which method is better.
 - The model is a simple, interpretable baseline (logistic regression), and module CCC appears only in the 2014 test year.
 - Clicks measure activity, not learning.
+
+## License
+
+The code in this repository is released under the [MIT License](LICENSE). The OULAD data belongs to the Open University and is licensed separately under CC-BY 4.0 (see Data above).
 
 ## Tech
 

@@ -1,5 +1,6 @@
 # Raw OULAD files are large (studentVle.csv is ~430 MB); download them instead of committing
-data/raw/
+data/raw/*
+!data/raw/.gitkeep
 
 # Jupyter and Python clutter
 .ipynb_checkpoints/
